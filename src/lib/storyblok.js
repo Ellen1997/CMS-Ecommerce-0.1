@@ -21,7 +21,8 @@ export const components = {
     grid: Grid,
     teaser: Teaser,
     hero: Hero,
-    doesNotExist: DoesNotExist
+    doesNotExist: DoesNotExist,
+    about_text: AboutText,
   };
 
   /**
