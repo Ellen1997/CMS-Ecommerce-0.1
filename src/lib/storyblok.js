@@ -10,6 +10,7 @@ import Header from "@/components/sb/Header";
 import Footer from "@/components/sb/Footer";
 import Config from '@/components/sb/config';
 import SbLink from "@/components/sb/Link";
+import AboutText from '@/components/sb/AboutText';
 
 export const components = {
     header: Header,
