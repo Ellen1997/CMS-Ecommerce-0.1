@@ -29,7 +29,7 @@ export const components = {
   };
 
   /**
-   * Get the Storyblok API exports a StoryblokApi object to be used in the application
+   * Get the Storyblok API exports a StoryblokApi object to be used in the 
    * @returns {StoryblokApi}
    */
 
