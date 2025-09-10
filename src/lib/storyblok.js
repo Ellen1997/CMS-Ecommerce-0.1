@@ -28,12 +28,25 @@ export const components = {
    * Get the Storyblok API exports a StoryblokApi object to be used in the application
    * @returns {StoryblokApi}
    */
+
+  const token =
+  process.env.NODE_ENV === "production"
+    ? process.env.STORYBLOK_DELIVERY_API_ACCESS_TOKEN
+    : process.env.STORYBLOK_PREVIEW_API_ACCESS_TOKEN;
+
   export const getStoryblokApi = storyblokInit({
-	accessToken: process.env.STORYBLOK_DELIVERY_API_ACCESS_TOKEN || 
-  process.env.NEXT_PUBLIC_STORYBLOK_DELIVERY_API_ACCESS_TOKEN,
+	accessToken: token,
 	use: [apiPlugin],
 	apiOptions: {
 		region: 'eu',
 	},
     components
 });
+
+export async function fetchGlobalConfig() {
+  const sb = getStoryblokApi();
+  const { data } = await sb.get("cdn/stories/globalconfig", {
+    version: process.env.NODE_ENV === "production" ? "published" : "draft",
+  });
+  return data.story;
+}
