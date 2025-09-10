@@ -6,9 +6,16 @@ import Feature from '@/components/sb/Feature';
 import Grid from '@/components/sb/Grid';
 import DoesNotExist from '@/components/sb/DoesNotExist';
 import Hero from '@/components/sb/Hero';
-import AboutText from '@/components/sb/AboutText';
+import Header from "@/components/sb/Header";
+import Footer from "@/components/sb/Footer";
+import Config from '@/components/sb/config';
+import SbLink from "@/components/sb/Link";
+
 export const components = {
-    // Add your components here
+    header: Header,
+    footer: Footer,
+    Link: SbLink,
+    Config: Config,
     page: Page,
     feature: Feature,
     grid: Grid,
@@ -23,7 +30,8 @@ export const components = {
    * @returns {StoryblokApi}
    */
   export const getStoryblokApi = storyblokInit({
-	accessToken: process.env.STORYBLOK_DELIVERY_API_ACCESS_TOKEN || process.env.NEXT_PUBLIC_STORYBLOK_DELIVERY_API_ACCESS_TOKEN,
+	accessToken: process.env.STORYBLOK_DELIVERY_API_ACCESS_TOKEN || 
+  process.env.NEXT_PUBLIC_STORYBLOK_DELIVERY_API_ACCESS_TOKEN,
 	use: [apiPlugin],
 	apiOptions: {
 		region: 'eu',

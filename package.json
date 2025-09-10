@@ -9,15 +9,29 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@storyblok/react": "^5.0.0",
+    "@storyblok/react": "^5.4.10",
     "classnames": "^2.5.1",
-    "next": "15.3.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "next": "^15.3.3",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "storyblok-js-client": "^7.1.4",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "tailwindcss": "^4"
-  }
+  },
+  "description": "- Node.js (version 18 or higher)\r - npm, yarn, pnpm, or bun package manager\r - Storyblok account and API token",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yolandaatt/CMS-Ecommerce.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yolandaatt/CMS-Ecommerce/issues"
+  },
+  "homepage": "https://github.com/yolandaatt/CMS-Ecommerce#readme"
 }
