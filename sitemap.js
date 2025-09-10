@@ -4,10 +4,10 @@ import StoryblokClient from "storyblok-js-client";
 
 
 const SETTINGS = {
-  CMS_PUBLIC_KEY: process.env.STORYBLOK_DELIVERY_API_ACCESS_TOKEN || "IxwikVhXYPuiGMKj2rFwOAtt",
+  CMS_PUBLIC_KEY: process.env.STORYBLOK_DELIVERY_API_ACCESS_TOKEN 
+    || process.env.NEXT_PUBLIC_STORYBLOK_DELIVERY_API_ACCESS_TOKEN,
   SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
 };
-
 
 const client = new StoryblokClient({ accessToken: SETTINGS.CMS_PUBLIC_KEY });
 
