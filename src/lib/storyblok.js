@@ -10,6 +10,8 @@ import Header from "@/components/sb/Header";
 import Footer from "@/components/sb/Footer";
 import Config from '@/components/sb/config';
 import SbLink from "@/components/sb/Link";
+import AboutText from '@/components/sb/AboutText';
+import LatestProductsList from '@/components/sb/LatestProductsList';
 
 export const components = {
     header: Header,
@@ -23,6 +25,7 @@ export const components = {
     hero: Hero,
     doesNotExist: DoesNotExist,
     about_text: AboutText,
+    latest_products_list: LatestProductsList,
   };
 
   /**

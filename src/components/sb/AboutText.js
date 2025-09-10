@@ -1,5 +1,6 @@
 import { storyblokEditable, renderRichText } from "@storyblok/react";
 
+
 export default function AboutText({blok}) {
     return (
         <section {...storyblokEditable(blok)}

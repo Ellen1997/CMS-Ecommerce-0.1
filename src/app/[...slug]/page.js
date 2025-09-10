@@ -1,32 +1,39 @@
-//Example of a dynamic page ex
-// about-us, blog/post-title, contact-us, etc.
-
-import { getStoryblokApi } from "@/lib/storyblok";
 import { notFound } from "next/navigation";
+import { getStoryblokApi } from "@storyblok/react/rsc";
+import { components } from "@/lib/storyblok";
+import { storyblokEditable } from "@storyblok/react";
 
-export default async function Page({ params }) {
+export default async function Page({ params: { slug }, searchParams }) {
   try {
-    //Array of slug parts ex ['blog', 'post-title']
-    const { slug } = await params;
-    const data = await fetchData(slug);
-    console.log(data);
-    //TODO: Replace with StoryblokStory component and add a fallback component
-    if(data?.data?.story?.content?.component === "config"){
-      throw new Error("CONFIG_ERROR");
-    }
+    const realSlug = slug?.join("/") || "home";
+
+    const isPreview =
+      process.env.NODE_ENV === "development" ||
+      searchParams?.storyblok === "1" ||
+      searchParams?.storyblok_preview === "1";
+
+    const storyblokApi = getStoryblokApi();
+    const { data } = await storyblokApi.get(`cdn/stories/${realSlug}`, {
+      version: isPreview ? "draft" : "published",
+    });
+
+    const blok = data?.story?.content;
+    if (!blok) return notFound();
+
+    const Component = components[blok.component];
+
+    if (!Component) return notFound();
+    console.log("→ Blok content:", blok);
+console.log("→ component:", blok.component);
+
     return (
-      <div>
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      </div>
+      <main {...storyblokEditable(blok)}>
+        <Component blok={blok} />
+        
+      </main>
     );
   } catch (error) {
+    console.error("Storyblok error:", error);
     return notFound();
   }
-}
-
-export async function fetchData(slug) {
-  const storyblokApi = getStoryblokApi();
-  return await storyblokApi.get(`cdn/stories/${slug.join("/")}`, {
-    version: "draft",
-  });
 }
